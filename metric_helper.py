@@ -1,5 +1,5 @@
 import tkinter
-from tkinter import StringVar, ttk
+from tkinter import ttk
 
 #Define root window
 root = tkinter.Tk()
@@ -32,12 +32,14 @@ output_field.config(state='readonly')
 #Create combo boxes for metric values
 metric_list = ['femto', 'pico', 'nano', 'micro', 'milli', 'centi', 'deci',
                'base', 'deca', 'hecto', 'kilo', 'mega', 'giga', 'tetra', 'peta']
+
 input_combobox = ttk.Combobox(root, value=metric_list, font=field_font, justify='center')
 output_combobox = ttk.Combobox(root, value=metric_list, font=field_font, justify='center')
 to_label = tkinter.Label(root, text='to', font=field_font, bg=bg_color)
-input_combobox.grid(row=1, column=0)
-output_combobox.grid(row=1, column=2)
-to_label.grid(row=1,column=1)
+
+input_combobox.grid(row=1, column=0, padx=10, pady=10)
+output_combobox.grid(row=1, column=2, padx=10, pady=10)
+to_label.grid(row=1, column=1, padx=10, pady=10)
 
 input_combobox.set('base')
 output_combobox.set('base')
