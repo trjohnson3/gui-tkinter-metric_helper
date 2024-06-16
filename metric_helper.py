@@ -1,5 +1,5 @@
 import tkinter
-from tkinter import StringVar
+from tkinter import StringVar, ttk
 
 #Define root window
 root = tkinter.Tk()
@@ -29,20 +29,18 @@ output_field.grid(row=0, column=2, padx=10, pady=10)
 input_field.insert(0, 'Enter your quantity')
 output_field.config(state='readonly')
 
-#Create dropdowns for metric values
+#Create combo boxes for metric values
 metric_list = ['femto', 'pico', 'nano', 'micro', 'milli', 'centi', 'deci',
                'base', 'deca', 'hecto', 'kilo', 'mega', 'giga', 'tetra', 'peta']
-input_choice = StringVar()
-output_choice = StringVar()
-input_dropdown = tkinter.OptionMenu(root, input_choice, *metric_list)
-output_dropdown = tkinter.OptionMenu(root, output_choice, *metric_list)
+input_combobox = ttk.Combobox(root, value=metric_list, font=field_font, justify='center')
+output_combobox = ttk.Combobox(root, value=metric_list, font=field_font, justify='center')
 to_label = tkinter.Label(root, text='to', font=field_font, bg=bg_color)
-input_dropdown.grid(row=1, column=0)
-output_dropdown.grid(row=1, column=2)
+input_combobox.grid(row=1, column=0)
+output_combobox.grid(row=1, column=2)
 to_label.grid(row=1,column=1)
 
-input_choice.set('base')
-output_choice.set('base')
+input_combobox.set('base')
+output_combobox.set('base')
 
 #Create a conversion button
 convert_button = tkinter.Button(root, text='convert', font=field_font, bg=button_color)
