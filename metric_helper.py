@@ -18,8 +18,8 @@ root.config(bg=bg_color)
 
 #Define layout
 #Create input and output entry fields
-input_field = tkinter.Entry(root, width=20, font=field_font)
-output_field = tkinter.Entry(root, width=20, font=field_font)
+input_field = tkinter.Entry(root, width=20, font=field_font, borderwidth=3)
+output_field = tkinter.Entry(root, width=20, font=field_font, borderwidth=3)
 equal_label = tkinter.Label(root, text='=', font=field_font, bg=bg_color)
 
 input_field.grid(row=0, column=0, padx=10, pady=10)
@@ -27,7 +27,6 @@ equal_label.grid(row=0, column=1, padx=10, pady=10)
 output_field.grid(row=0, column=2, padx=10, pady=10)
 
 input_field.insert(0, 'Enter your quantity')
-output_field.insert(0, 'Result')
 output_field.config(state='readonly')
 
 #Create dropdowns for metric values
@@ -47,7 +46,7 @@ output_choice.set('base')
 
 #Create a conversion button
 convert_button = tkinter.Button(root, text='convert', font=field_font, bg=button_color)
-convert_button.grid(row=2, column=0, columnspan=3)
+convert_button.grid(row=2, column=0, columnspan=3, padx=10, pady=10, ipadx=50)
 
 
 # Run app
