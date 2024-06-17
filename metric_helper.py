@@ -1,5 +1,5 @@
 import tkinter
-from tkinter import ttk
+from tkinter import ttk, END
 
 #Define root window
 root = tkinter.Tk()
@@ -14,6 +14,37 @@ button_color = '#f5cf87'
 root.config(bg=bg_color)
 
 #Define funcitons
+def convert():
+    '''Converts from one metric to another'''
+    metric_values = {
+        'femto': 10**-15,
+        'pico': 10**-12,
+        'nano': 10**-9,
+        'micro': 10**-6,
+        'milli': 10**-3,
+        'centi': 10**-2,
+        'deci': 10**-1,
+        'base': 10**0,
+        'deca': 10**1,
+        'hecto': 10**2,
+        'kilo': 10**3,
+        'mega': 10**6,
+        'giga': 10**9,
+        'tetra': 10**12,
+        'peta': 10**15
+    }
+    #Clear output field
+    output_field.delete(0, END)
+    #Get all user info
+    start_value = float(input_field.get())
+    start_prefix = input_combobox.get()
+    end_prefix = output_combobox.get()
+    #Do conversion
+    base_value = start_value * metric_values[start_prefix]
+    end_value = base_value / metric_values[end_prefix]
+    #Update output field with result
+    output_field.insert(0, str(end_value))
+
 
 
 #Define layout
@@ -27,7 +58,6 @@ equal_label.grid(row=0, column=1, padx=10, pady=10)
 output_field.grid(row=0, column=2, padx=10, pady=10)
 
 input_field.insert(0, 'Enter your quantity')
-output_field.config(state='readonly')
 
 #Create combo boxes for metric values
 metric_list = ['femto', 'pico', 'nano', 'micro', 'milli', 'centi', 'deci',
@@ -45,7 +75,8 @@ input_combobox.set('base')
 output_combobox.set('base')
 
 #Create a conversion button
-convert_button = tkinter.Button(root, text='convert', font=field_font, bg=button_color)
+convert_button = tkinter.Button(root, text='convert', font=field_font, bg=button_color,
+                                command=convert)
 convert_button.grid(row=2, column=0, columnspan=3, padx=10, pady=10, ipadx=50)
 
 
